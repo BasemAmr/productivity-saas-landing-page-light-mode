@@ -3,20 +3,24 @@ import cogImage from "@/assets/cog.png";
 import cylinderImage from "@/assets/cylinder.png";
 import noodleImage from "@/assets/noodle.png";
 
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 export const Hero = () => {
-
   const heroRef = useRef<HTMLElement | null>(null);
 
   const { scrollYProgress } = useScroll({
-    target: window
+    target: heroRef,
+    offset: ["start end", "end start"],
   });
 
+  const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
 
   return (
-    <section ref={heroRef} className="pt-8 pb-20 md:pt-5 md:pb-10 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,_#183EC2,_#EAEEFE_100%)] overflow-x-clip">
+    <section
+      ref={heroRef}
+      className="pt-8 pb-20 md:pt-5 md:pb-10 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,_#183EC2,_#EAEEFE_100%)] overflow-x-clip"
+    >
       <div className="container px-5 mx-auto">
         <div className="md:flex items-center">
           <div className="md:w-[478px]">
@@ -42,28 +46,29 @@ export const Hero = () => {
               alt="Cog Image"
               className="md:absolute md:h-full md:w-auto md:max-w-none md:-left-6 lg:left-0"
               animate={{
-                translateY: [-30, 30]
+                translateY: [-30, 30],
               }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
                 repeatType: "mirror",
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
-
             />
-            <img
+            <motion.img
               src={cylinderImage}
               width={220}
               height={220}
               alt="Cylinder Image"
               className="hidden md:block md:absolute md:-top-8 md:-left-32"
+              style={{ translateY: translateY }}
             />
-            <img
+            <motion.img
               src={noodleImage}
               width={220}
               alt="Noodle Image"
               className="hidden absolute lg:block top-[524px] left-[448px] rotate-[30deg]"
+              style={{ rotate: 30, translateY: translateY }}
             />
           </div>
         </div>

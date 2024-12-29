@@ -1,19 +1,45 @@
-
 import { ReactComponent as ArrowRight } from "@/assets/arrow-right.svg";
 import starImage from "@/assets/star.png";
 import spring from "@/assets/spring.png";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export const CallToAction = () => {
+  const ctaRef = useRef<HTMLElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ctaRef,
+    offset: ["end end", "start start"],
+  });
+
+  const translateY = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   return (
-    <section className="bg-gradient-to-b from-[#ffffff] to-[#D2DCFF] py-24 overflow-x-clip ">
+    <section
+      ref={ctaRef}
+      className="bg-gradient-to-b from-[#ffffff] to-[#D2DCFF] py-24 overflow-x-clip"
+    >
       <div className="container px-5 mx-auto">
         <div className="section-heading relative">
           <h2 className="section-title">Sign up for free today</h2>
           <p className="section-description mt-5">
-            Celebrate the joy of accomplishment with an app designed to track your progress and motivate your efforts
+            Celebrate the joy of accomplishment with an app designed to track
+            your progress and motivate your efforts
           </p>
-          <img src={starImage} alt="Star" width={360} className="hidden md:block absolute -left-[350px] -top-[137px]" />
-          <img src={spring} alt="Spring" width={360}  className="hidden md:block absolute -right-[331px] -top-[19px]" />
+          <motion.img
+            src={starImage}
+            alt="Star"
+            width={360}
+            className="hidden md:block absolute -left-[350px] -top-[137px]"
+            style={{ translateY }}
+          />
+          <motion.img
+            src={spring}
+            alt="Spring"
+            width={360}
+            className="hidden md:block absolute -right-[331px] -top-[19px]"
+            style={{ translateY }}
+          />
         </div>
         <div className="flex gap-1 items-center justify-center mt-[30px]">
           <button className="btn btn-primary">Get for free</button>

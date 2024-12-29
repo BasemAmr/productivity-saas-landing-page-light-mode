@@ -4,6 +4,7 @@ import { ReactComponent as SocialLinkedIn } from '@/assets/Social-LinkedIn.svg';
 import { ReactComponent as SocialPin } from '@/assets/Social-Pin.svg';
 import { ReactComponent as SocialYoutube } from '@/assets/Social-Youtube.svg';
 import Logo from '@/assets/logosaas.png';
+import { motion } from 'framer-motion';
 
 export const Footer = () => {
   return (
@@ -11,7 +12,11 @@ export const Footer = () => {
       <div className="container mx-auto px-5">
         <div className="flex flex-col items-center justify-center gap-8">
           <div className="relative flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#F87BFF] via-[#FB92CF] via-[#FFDD9B] via-[#C2F0B1] to-[#2FD8FE] blur-xl" />
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-[#F87BFF] via-[#FB92CF] via-[#FFDD9B] via-[#C2F0B1] to-[#2FD8FE] blur-xl"
+              animate={{ opacity: [0.8, 1, 0.8] }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+            />
             <img src={Logo} alt="SaaS Logo" height={40} width={40} className="relative z-10" />
           </div>
           
