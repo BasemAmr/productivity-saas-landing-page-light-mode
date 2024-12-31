@@ -1,4 +1,4 @@
-import { ReactComponent as ArrowRight } from "@/assets/arrow-right.svg";
+import { ArrowRight } from "@/assets";
 import cogImage from "@/assets/cog.png";
 import cylinderImage from "@/assets/cylinder.png";
 import noodleImage from "@/assets/noodle.png";

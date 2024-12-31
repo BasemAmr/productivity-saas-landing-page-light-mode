@@ -1,10 +1,12 @@
-import { ReactComponent as SocialX } from '@/assets/Social-X.svg';
-import { ReactComponent as SocialInsta } from '@/assets/Social-Insta.svg';
-import { ReactComponent as SocialLinkedIn } from '@/assets/Social-LinkedIn.svg';
-import { ReactComponent as SocialPin } from '@/assets/Social-Pin.svg';
-import { ReactComponent as SocialYoutube } from '@/assets/Social-Youtube.svg';
-import Logo from '@/assets/logosaas.png';
-import { motion } from 'framer-motion';
+import {
+  X as SocialX,
+  Insta as SocialInsta,
+  Linkedin as SocialLinkedIn,
+  Pin as SocialPin,
+  Youtube as SocialYoutube,
+} from "@/assets";
+import Logo from "@/assets/logosaas.png";
+import { motion } from "framer-motion";
 
 export const Footer = () => {
   return (
@@ -15,11 +17,21 @@ export const Footer = () => {
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-[#F87BFF] via-[#FB92CF] via-[#FFDD9B] via-[#C2F0B1] to-[#2FD8FE] blur-xl"
               animate={{ opacity: [0.8, 1, 0.8] }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
             />
-            <img src={Logo} alt="SaaS Logo" height={40} width={40} className="relative z-10" />
+            <img
+              src={Logo}
+              alt="SaaS Logo"
+              height={40}
+              width={40}
+              className="relative z-10"
+            />
           </div>
-          
+
           <nav className="flex flex-col md:flex-row gap-6 text-sm items-center justify-center">
             <a href="#">About</a>
             <a href="#">Features</a>
@@ -37,9 +49,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <p className="text-sm text-center mt-8">
-          © 2024 All rights reserved.
-        </p>
+        <p className="text-sm text-center mt-8">© 2024 All rights reserved.</p>
       </div>
     </footer>
   );

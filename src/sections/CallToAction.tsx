@@ -1,4 +1,4 @@
-import { ReactComponent as ArrowRight } from "@/assets/arrow-right.svg";
+import { ArrowRight } from "@/assets";
 import starImage from "@/assets/star.png";
 import spring from "@/assets/spring.png";
 import { motion, useScroll, useTransform } from "framer-motion";

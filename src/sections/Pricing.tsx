@@ -1,4 +1,4 @@
-import { ReactComponent as CheckIcon } from "@/assets/check.svg";
+import { Check as CheckIcon } from "@/assets";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
 
