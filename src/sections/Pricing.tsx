@@ -1,6 +1,7 @@
-import { Check as CheckIcon } from "@/assets";
+import { SvgIconsContext } from "@/assets";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
+import { useContext } from "react";
 
 const pricingTiers = [
   {
@@ -55,6 +56,10 @@ const pricingTiers = [
 ];
 
 export const Pricing = () => {
+
+  const CheckIcon = useContext(SvgIconsContext).icons.check;
+  const isLoading = useContext(SvgIconsContext).isLoading;
+
   return (
     <section className="py-24 bg-white">
       <div className="container px-5 mx-auto">
@@ -125,7 +130,10 @@ export const Pricing = () => {
               <ul className="flex flex-col gap-5 mt-8">
                 {tier.features.map((feature) => (
                   <li key={feature} className="text-sm flex items-center gap-4">
-                    <CheckIcon className="w-6 h-6" />
+                    {
+                      isLoading ? null :
+                      <CheckIcon className="w-6 h-6" />
+                    }
                     {feature}
                   </li>
                 ))}

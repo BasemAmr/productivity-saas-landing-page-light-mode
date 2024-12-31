@@ -128,7 +128,7 @@ const TestimonialsColumn = ({
       ))}
     </motion.div>
   </div>
-);
+); 
 export const Testimonials = () => {
   return (
     <section className="bg-white">

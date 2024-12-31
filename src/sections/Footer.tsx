@@ -1,14 +1,17 @@
-import {
-  X as SocialX,
-  Insta as SocialInsta,
-  Linkedin as SocialLinkedIn,
-  Pin as SocialPin,
-  Youtube as SocialYoutube,
-} from "@/assets";
+import { SvgIconsContext } from "@/assets";
 import Logo from "@/assets/logosaas.png";
 import { motion } from "framer-motion";
+import { useContext } from "react";
 
 export const Footer = () => {
+  const isLoading = useContext(SvgIconsContext).isLoading;
+
+  const SocialX = useContext(SvgIconsContext).icons.x;
+  const SocialInsta = useContext(SvgIconsContext).icons.insta;
+  const SocialLinkedIn = useContext(SvgIconsContext).icons.linkedin;
+  const SocialPin = useContext(SvgIconsContext).icons.pin;
+  const SocialYoutube = useContext(SvgIconsContext).icons.youtube;
+
   return (
     <footer className="bg-black text-[#BCBCBC] py-10">
       <div className="container mx-auto px-5">
@@ -41,11 +44,15 @@ export const Footer = () => {
           </nav>
 
           <div className="flex gap-4">
-            <SocialX className="w-6 h-6" />
-            <SocialInsta className="w-6 h-6" />
-            <SocialLinkedIn className="w-6 h-6" />
-            <SocialPin className="w-6 h-6" />
-            <SocialYoutube className="w-6 h-6" />
+            {isLoading ? null : (
+              <>
+                <SocialX className="w-6 h-6" />
+                <SocialInsta className="w-6 h-6" />
+                <SocialLinkedIn className="w-6 h-6" />
+                <SocialPin className="w-6 h-6" />
+                <SocialYoutube className="w-6 h-6" />
+              </>
+            )}
           </div>
         </div>
 

@@ -1,20 +1,24 @@
-import { ArrowRight } from "@/assets";
+import { SvgIconsContext } from "@/assets";
 import cogImage from "@/assets/cog.png";
 import cylinderImage from "@/assets/cylinder.png";
 import noodleImage from "@/assets/noodle.png";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 
 export const Hero = () => {
   const heroRef = useRef<HTMLElement | null>(null);
 
+  const isLoading = useContext(SvgIconsContext).isLoading;
+  const  ArrowRight  = useContext(SvgIconsContext).icons.arrowRight;
+  
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start end", "end start"],
   });
 
   const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
 
   return (
     <section
@@ -36,7 +40,10 @@ export const Hero = () => {
               <button className="btn btn-primary">Get for free</button>
               <button className="btn btn-text gap-1 flex">
                 <span>Learn more</span>
-                <ArrowRight className="h-5 w-5 inline-flex justify-center items-center" />
+                {
+                  isLoading ? null :
+                  <ArrowRight className="h-5 w-5 inline-flex justify-center items-center" />
+                }
               </button>
             </div>
           </div>

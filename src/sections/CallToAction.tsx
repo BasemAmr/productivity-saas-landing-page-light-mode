@@ -1,8 +1,8 @@
-import { ArrowRight } from "@/assets";
+import { SvgIconsContext } from "@/assets";
 import starImage from "@/assets/star.png";
 import spring from "@/assets/spring.png";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 
 export const CallToAction = () => {
   const ctaRef = useRef<HTMLElement | null>(null);
@@ -11,6 +11,10 @@ export const CallToAction = () => {
     target: ctaRef,
     offset: ["end end", "start start"],
   });
+
+  const isLoading = useContext(SvgIconsContext).isLoading;
+  const icons = useContext(SvgIconsContext).icons;
+  const ArrowRight = isLoading ? null : icons.arrowRight;
 
   const translateY = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
@@ -45,7 +49,7 @@ export const CallToAction = () => {
           <button className="btn btn-primary">Get for free</button>
           <button className="btn btn-text gap-1 flex">
             <span>Learn more</span>
-            <ArrowRight className="h-5 w-5 inline-flex justify-center items-center" />
+            {ArrowRight && <ArrowRight className="h-5 w-5 inline-flex justify-center items-center" />}
           </button>
         </div>
       </div>

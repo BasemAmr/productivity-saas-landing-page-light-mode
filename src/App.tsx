@@ -1,9 +1,12 @@
 import { RouterProvider } from "react-router-dom"
 import router from "./router"
+import { SvgIconsProvider } from "./assets"
 
 function App () {
   return (
-    <RouterProvider router={router} />
+    <SvgIconsProvider >
+      <RouterProvider router={router} />
+    </SvgIconsProvider>
   )
 }
 
